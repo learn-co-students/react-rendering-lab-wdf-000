@@ -2,7 +2,11 @@ const React = require('react');
 
 class Circle extends React.Component {
 	shouldComponentUpdate(nextProps, nextState) {
-	  return (this.props.scriptVersion !== nextProps.scriptVersion);
+	  if (this.props.color !== nextProps.color) {
+	  	return true
+	  } else {
+	  	return false
+	  }
 	}
 
   render() {
