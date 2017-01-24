@@ -2,6 +2,24 @@ const React = require('react');
 
 class Rating extends React.Component {
 
+  componentWillReceiveProps(nextProps) {
+    if(this.props.rating === nextProps.rating) {
+      this.setState({
+        increasing: false,
+        decreasing: false,
+      })
+    } else if (this.props.rating > nextProps.rating) {
+      this.setState({
+        increasing: false,
+        decreasing: true,
+      })} else {
+        this.setState({
+          increasing: true,
+          decreasing: false,
+      })
+    }
+  }
+
   constructor(props) {
     super(props);
     this.state = {
