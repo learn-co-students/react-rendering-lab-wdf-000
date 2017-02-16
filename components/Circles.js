@@ -1,5 +1,4 @@
 const React = require('react');
-const Circle = require('./Circle');
 
 class Circles extends React.Component {
 
@@ -13,6 +12,14 @@ class Circles extends React.Component {
       ]
     };
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if(this.props.color !== nextProps.color) {
+      return true
+    } else {
+      return false
+    }
   }
 
   handleClick() {
