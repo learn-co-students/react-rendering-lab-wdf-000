@@ -2,6 +2,23 @@ const React = require('react');
 
 class Rating extends React.Component {
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.rating < nextProps.rating) {
+      this.setState({
+        increasing: true
+      })
+    } else if (nextProps.rating < this.props.rating) {
+      this.setState({
+        decreasing: true
+      })
+    } else {
+      this.setState({
+        increasing: false,
+        decreasing: false
+      });
+    }
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -9,6 +26,7 @@ class Rating extends React.Component {
       decreasing: false
     };
   }
+
 
   render() {
     let trend = 'stable';

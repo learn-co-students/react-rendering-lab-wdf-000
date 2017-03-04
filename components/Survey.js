@@ -7,6 +7,16 @@ function random(array) {
 
 class Survey extends React.Component {
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.rating < nextProps.rating) {
+      this.increaseRating()
+    } else if (nextProps.rating < this.props.rating) {
+      this.decreaseRating()
+    } else {
+      this.maintainRating()
+    }
+  }
+
   constructor(props) {
     super(props);
 
@@ -18,6 +28,8 @@ class Survey extends React.Component {
     this.maintainRating = this.maintainRating.bind(this);
     this.decreaseRating = this.decreaseRating.bind(this);
   }
+
+
 
   increaseRating() {
     this.setState({ rating: this.state.rating + 1 });
