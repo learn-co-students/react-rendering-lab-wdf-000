@@ -2,6 +2,26 @@ import React from 'react';
 
 export default class Rating extends React.Component {
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.rating > nextProps.rating) {
+      this.setState({
+        increasing: false,
+        decreasing: true
+      })
+    } else if (this.props.rating < nextProps.rating) {
+      this.setState({
+        decreasing: false,
+        increasing: true
+      })
+    } else {
+      this.setState({
+          decreasing: false,
+          increasing: false
+        })
+      }
+    }
+
+
   constructor(props) {
     super(props);
     this.state = {
